@@ -29,20 +29,18 @@
 		width="200">
 		</el-table-column> -->
 			<el-table-column
-			inline-template
 			label="状态"
 			width="100">
-				<div>
-					{{ row.status | status}}
-				</div>
+				<template slot-scope="scope">
+					{{ scope.row.status | status}}
+				</template>
 			</el-table-column>
 			<el-table-column
 			label="操作"
-			inline-template
 			width="200">
-				<div>
+				<template slot-scope="scope">
 					<span>
-						<router-link :to="{ name: 'menuEdit', params: { id: row.id }}" class="btn-link edit-btn">
+						<router-link :to="{ name: 'menuEdit', params: { id: scope.row.id }}" class="btn-link edit-btn">
 						编辑
 						</router-link>
 					</span>
@@ -50,11 +48,11 @@
 						<el-button
 						size="small"
 						type="danger"
-						@click="confirmDelete(row)">
+						@click="confirmDelete(scope.row)">
 						删除
 						</el-button>
 					</span>
-				</div>
+				</template>
 			</el-table-column>
 		</el-table>
 		<div class="pos-rel p-t-20">
